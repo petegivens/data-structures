@@ -7,13 +7,13 @@ var Stack = function() {
 };
 
 var stackMethods = {
-  'push' : function(value) {
+  'push': function(value) {
     if (typeof value === 'string') {
       this[this.length] = value;
       this.length++;
     }
   },
-  'pop' : function() {
+  'pop': function() {
     var temp = this[this.length - 1];
     delete this[this.length - 1];
     if (this.length > 0) {
@@ -21,7 +21,7 @@ var stackMethods = {
     }
     return temp;
   },
-  'size' : function() {
+  'size': function() {
     return this.length;
   }
 };
