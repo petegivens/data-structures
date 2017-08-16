@@ -4,28 +4,28 @@ var Queue = function() {
   // Use an object with numeric keys to store values
   var storage = {};
   var size = 0;
+  var oldest = 0;
+  var newest = -1;
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    if (typeof value === 'string') {
-      storage[size] = value;
+    if ( typeof value === 'string' ) {
+      storage[newest + 1] = value;
       size++;
+      newest++;
+      console.log('size:', size, 'oldest:', oldest, 'newest:', newest);
     }
   };
+
   someInstance.dequeue = function() {
-    var temp = storage[0];
-    delete storage[0];
-    if (size > 0) {
+    if ( size > 0 ) {
+      var temp = storage[oldest];
       size--;
+      delete storage[oldest];
+      oldest++;
+      console.log('size:', size, 'oldest:', oldest, 'newest:', newest);
+      return temp;
     }
-    for (var i = 0; i < Object.keys(storage).length; i++ ) {
-      var temp2 = storage[i];
-      if(storage[i + 1]) {
-        storage[i] = storage[i + 1];
-      }
-      console.log('storage[' + i + ']:', storage[i])
-    }
-    return temp;
   };
 
   someInstance.size = function() {
