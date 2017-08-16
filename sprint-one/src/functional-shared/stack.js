@@ -4,13 +4,13 @@ var Stack = function() {
 };
 
 var stackMethods = {
-  'push': function(value){
+  'push': function(value) {
 
   },
-  'pop': function(){
+  'pop': function() {
 
   },
-  'size': function(){
+  'size': function() {
 
   }
 };
