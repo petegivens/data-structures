@@ -10,7 +10,7 @@ var Stack = function() {
     if (typeof value === 'string') {
       storage[size] = value;
       size++;
-      console.log('size after push:', size);
+      // console.log('size after push:', size);
     }
   };
 
