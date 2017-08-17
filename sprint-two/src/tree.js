@@ -20,8 +20,20 @@ treeMethods.addChild = function(value) {
 
 // Function for checking if the tree contains a target value.
 treeMethods.contains = function(target) {
-    // Default value
   var hasTarget = false;
+  // Base case
+  if ( this.value === target ) {
+    hasTarget = true;
+    return hasTarget;
+  }
+
+  // Recurse case
+  for (var i = 0; i < this.children.length; i++) {
+    hasTarget = hasTarget || this.children[i].contains(target);
+  }
+
+  return hasTarget;
+};
 
   // Base case
   if ( this.value === target ) {
