@@ -18,14 +18,14 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
+    var temp = storage[oldest];
+    delete storage[oldest];
     if ( size > 0 ) {
-      var temp = storage[oldest];
       size--;
-      delete storage[oldest];
       oldest++;
       console.log('size:', size, 'oldest:', oldest, 'newest:', newest);
-      return temp;
     }
+    return temp;
   };
 
   someInstance.size = function() {
