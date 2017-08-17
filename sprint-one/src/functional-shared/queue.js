@@ -31,5 +31,5 @@ queueMethods.dequeue = function() {
 };
 
 queueMethods.size = function() {
-    return this.length;
+  return this.length;
 };
