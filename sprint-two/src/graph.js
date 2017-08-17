@@ -14,7 +14,6 @@ var Graph = function() {
 Graph.prototype.addNode = function(node) {
   // adding node to graph
   this.nodes.push(node);
-  this.fromI
 
   var nodeI = this.nodes.indexOf(node);
   this.edges[nodeI] = [];
@@ -23,16 +22,16 @@ Graph.prototype.addNode = function(node) {
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
   for (var i = 0; i < this.nodes.length; i++) {
-     if ( this.nodes[i] === node){
-       return true;
-     }
+    if ( this.nodes[i] === node ) {
+      return true;
+    }
   }
   return false;
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  for (var i = 0; i < this.nodes.length; i++){
+  for (var i = 0; i < this.nodes.length; i++) {
     if ( this.nodes[i] === node ) {
       this.nodes.splice(i, 1);
     }
