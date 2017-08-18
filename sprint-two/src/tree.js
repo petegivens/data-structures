@@ -35,20 +35,6 @@ treeMethods.contains = function(target) {
   return hasTarget;
 };
 
-  // Base case
-  if ( this.value === target ) {
-    hasTarget = true;
-    return hasTarget;
-  }
-
-  // Recurse case
-  for ( var i = 0; i < this.children.length; i++ ) {
-    hasTarget = hasTarget || this.children[i].contains(target);
-  }
-
-  return hasTarget;
-};
-
 /*
  * Complexity: What is the time complexity of the above functions?
  addChild: O()
