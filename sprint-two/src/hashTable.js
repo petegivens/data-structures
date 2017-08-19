@@ -13,39 +13,40 @@ HashTable.prototype.insert = function(k, v, shuffle) {
 
   var bucket = this._storage.get(index);
   var temp = Object.keys(bucket).length;
+
   bucket[k] = v;
 
   if (temp < Object.keys(bucket).length) {
     this._tupleCount++;
+    if (!shuffle){
+      this.checkRatio();
+    }
   }
 
   // tempHash is not getting passed correct limit when shuffle is called. for reduction only
-  if (!shuffle){
-    this.checkRatio();
-  }
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
-  console.log('bucket inside of retrieve function:', bucket);
-  console.log('tuple count:', this._tupleCount);
-  return bucket[k];
+  // console.log('bucket inside of retrieve function:', bucket);
+  // console.log('tuple count:', this._tupleCount);
+  if (bucket){
+    return bucket[k];
+  }
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+
   var bucket = this._storage.get(index);
 
   if (bucket[k]){
     delete bucket[k];
-    if (this._tupleCount > 0) {
-      this._tupleCount--;
-    }
-  
+    this._tupleCount--;
+    this.checkRatio();
   }
 
-  this.checkRatio();
 };
 
 HashTable.prototype.checkRatio = function() {
@@ -54,7 +55,7 @@ HashTable.prototype.checkRatio = function() {
   if ( ratio >= .75 ) {
     this._limit = this._limit * 2;
     this.shuffle(this._limit);
-  } else if ( ratio <= .25 ) {
+  } else if ( ratio < .25) {
     this._limit = this._limit / 2;
     this.shuffle(this._limit);
   }

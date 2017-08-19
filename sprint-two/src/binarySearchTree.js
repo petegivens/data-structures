@@ -1,8 +1,19 @@
 var BinarySearchTree = function(value) {
   this.value = value;
+//
+// this.level = null;
+// this.level.queue = new Set([]);
+
+  // add level property to each new node
+  // level should be parent's level +1
 };
 
 BinarySearchTree.prototype.insert = function(value) {
+// for every insert, set the new node's level to be parent's level + 1
+// add add to its level's queue in its proper place (sorted numerically)
+
+
+
   if ( value < this.value ) {
     if ( this.left ) {
       this.left.insert(value);
@@ -39,6 +50,11 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
   } if ( this.right ) {
     this.right.depthFirstLog(cb)
   }
+};
+
+BinarySearchTree.prototype.breadthFirstLog = function(cb) {
+  // loop through this.level.queue
+    // loop through each array inside of that
 };
 /*
  * Complexity: What is the time complexity of the above functions?
