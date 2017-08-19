@@ -11,6 +11,7 @@ HashTable.prototype.insert = function(k, v) {
   }
 
   var bucket = this._storage.get(index);
+  var temp = Object.keys(bucket).length;
   bucket[k] = v;
 
 };
